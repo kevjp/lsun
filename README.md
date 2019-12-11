@@ -107,4 +107,9 @@ controversial labels in the final evaluation.
    ### usage
    The argument to call this function from data.py can be done using the arguments
    `python data.py slice --limit <number of images to slice out> --out_dir '/path/to/new/lmdb/database'` 
+   
+   Once the abridged lmdb database has been generated then the images can be downloaded from it by the command:
+   `python3 data.py export <image db path> --out_dir <output directory>`
+   
+   
 
