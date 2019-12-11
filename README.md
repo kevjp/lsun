@@ -1,3 +1,7 @@
+This repo is a cloned version of one found at https://github.com/fyu/lsun. The README contains information as provided by the original repo and is shown between the section within the marked lins
+
+___
+
 # LSUN
 
 Please check [LSUN webpage](http://www.yf.io/p/lsun) for more information about the dataset.
@@ -90,3 +94,17 @@ The score for the submission is the percentage of correctly predicted
 labels. In our evaluation, we will double check our ground truth
 labels for the testing images and we may remove some images with
 controversial labels in the final evaluation.
+
+---
+
+**The following changes have been made from the original code and are specific to this repo**
+
+- Added in new function slice_lmdb() to data.py script. This function allows you to select a specific number of images from the lsun lmdb database. This function was generated so that I could scale down the number of images for training. The training exercise that this data was used for was to train the bedroom StyleGAN network obtained from NVIDIA labs repo (https://github.com/NVlabs/stylegan). A transfer training approach was used to train this framework on other room type images namely Living Room and Kitchen images as a proof of principle to determine whether this approach was effective at generating other room images. Training occurred on Google's colab environment and so training images needed to be saved on my personal Google drive. Consequently I only had sufficient space to store a proportion of the lsun data. The slice_lmdb() function takes 3 arguments:
+
+   - the path to the original lsun image lmdb database
+   - the path to the new lmdb image directory containing a sample of the original lmdb database
+   - limit - the number of images to include in the new lmdb database
+   ### usage
+   The argument to call this function from data.py can be done using the arguments
+   `python data.py slice --limit <number of images to slice out> --out_dir '/path/to/new/lmdb/database'` 
+
